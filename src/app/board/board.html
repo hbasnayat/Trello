@@ -1,0 +1,102 @@
+<style>
+  .container {
+    margin-top: 10rem;
+
+  }
+
+  @media(max-width:500px) {
+
+    .container {
+      margin-top: 6rem;
+    }
+  }
+</style>
+
+<head>
+  <!-- <link rel="stylesheet" href="./node_modules/ng-drag-drop/style.css"> -->
+</head>
+
+<br>
+<br>
+<br>
+
+<nav class="navbar navbar-dark bg-custom">
+  <span class="navbar-brand mb-0 h1">{{data?.name}}</span>
+</nav>
+
+
+
+<div *ngIf="data && checkswim;else noswim">
+  <div class="row">
+    <div *ngFor="let el of data.swimlane" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+      <div class="card" style="border: 2px solid black; width: 15rem; margin-left: 5px;">
+        <h4 class="card-header text-center text-white bg-primary">{{el.name}}</h4>
+        <div class="card-body">
+
+          <div *ngIf="checkcard;else nocard">
+            <div *ngFor="let k of el.card" droppable (onDrop)="onItemDrop($event,el._id)">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" [dragData]="k" [dragData]="el._id" draggable (onDragEnd)=" onItemDrag(el._id,k._id)">{{k.name}}</li>
+              </ul>
+
+              <form #cardedit="ngForm" (ngSubmit)="editcard(cardedit.value,k._id,el._id)">
+                <div class="form-group">
+                  <div class="input-group mb-3">
+                    <input type="text" name="name" ngModel required class="form-control" required>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="cardedit.invalid">Edit</button>
+
+              </form>
+              <button class="btn btn-danger" (click)="delcard(k._id,el._id)">Delete</button>
+
+              <hr>
+              <br>
+
+
+
+            </div>
+
+            <form #cardform="ngForm" (ngSubmit)="cardsub(cardform.value,el._id)" droppable (onDrop)="onItemDrop($event,el._id)">
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <input type="text" name="name" ngModel class="form-control" required>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" [disabled]="cardform.invalid">Add Card</button>
+              <!-- <button type="submit" class="btn btn-danger" (click)="delform(k._id,el._id)">Delete Card</button> -->
+            </form>
+
+          </div>
+          <ng-template #nocard>
+            <p style="color:white">You Have No Cards..!!</p>
+            <form #cardform="ngForm" (ngSubmit)="cardsub(cardform.value,el._id)" droppable (onDrop)="onItemDrop($event,el._id)">
+              <div class="form-group">
+                <div class="input-group mb-3">
+                  <input type="text" name="name" ngModel class="form-control" required>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" [disabled]="cardform.invalid">Add Card</button>
+            </form>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<ng-template #noswim>
+  <p style="color:white">You Have No Swimlanes..!!</p>
+</ng-template>
+
+
+<div style="width:50%; margin: auto">
+  <form #swimform="ngForm" (ngSubmit)="swimsub(swimform.value)">
+    <div class="form-group">
+      <div class="input-group mb-3">
+        <input type="text" name="name" ngModel required class="form-control" required>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="swimform.invalid">Add Swimlane</button>
+  </form>
+</div>

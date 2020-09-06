@@ -1,0 +1,22 @@
+<style>
+.pointer{
+    cursor:pointer;
+}
+</style>
+
+<br><br><br><div *ngIf="checklen ;else nodata">
+    <h3 style="color:white;"> Your Personal Boards</h3>
+    <br>
+    <div class="row">
+    <div *ngFor="let el of data" (click)="viewblog(el._id)" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+          <div class="card pointer" style="width: 15rem;">
+            <h3 class="card-header bg-primary" style="color: white">{{el.name}}</h3>
+            <div class="card-body">
+            <b>Click Here to see Board</b>
+            </div>
+          </div>
+          <br>
+      </div>
+    </div>
+    </div>
+    <ng-template #nodata><p style="color:white"> You Have No Boards..!! </p></ng-template>

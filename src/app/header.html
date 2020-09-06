@@ -1,0 +1,111 @@
+<style>
+  .navbar-brand {
+    display: inline-block;
+    float: left;
+    margin-right: .75em;
+    height: 3em;
+
+
+  }
+
+  .bg-custom {
+    background-color: #0079bf;
+  }
+
+  .bg-custom2 {
+    background-color: #d6dadc;
+
+  }
+
+  @media(max-width:700px) {
+    .navbar-brand {
+      height: 2em;
+    }
+    .btn {
+      margin-top: .5rem;
+    }
+  }
+
+  .btn-custom {
+    background-color: #0067a3;
+  }
+</style>
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-custom">
+  <a class="navbar-brand" href="#">
+    <img src="https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/trello-header-logos/af7af6ed478d3460709d715d9b3f74a4/trello-logo-white.svg"
+      class="img-fluid" style="height:100%;">
+
+
+
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">
+          <i class="fa fa-home"></i> Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      <li class="nav-item" *ngIf="isloggedin()">
+        <a class="nav-link" href="#" routerLink="/dashboard/board/allboards">See your boards</a>
+      </li>
+      <li class="nav-item">
+        <p class="nav-link" style="font-weight: bold; color:#52a5cb;">Made with ❤ by Himanshu
+          
+        </p>
+      </li>
+      
+
+    </ul>
+
+
+
+
+    <div class="mr-1" *ngIf="isloggedin()">
+      <button class=" btn btn-custom2" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
+
+
+    <div class=" mr-5 dropleft " *ngIf="isloggedin()">
+      <button class=" btn btn-custom2 dropdown-toggle " data-toggle="dropdown">
+        <b style="color:#444; "> ME </b>
+      </button>
+      <div class="dropdown-menu ">
+
+        <span class="dropdown-item-text">Username</span>
+
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item disabled" href="#">Profile</a>
+        <a class="dropdown-item disabled" href="#">Cards</a>
+        <a class="dropdown-item disabled" href="#">Settings</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item disabled" href="#">Help</a>
+        <a class="dropdown-item disabled" href="#">Shortcuts</a>
+        <a class="dropdown-item disabled" href="#">Change Language</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item " routerLink="/login" (click)="logout()">Logout</a>
+      </div>
+    </div>
+
+
+
+
+
+    <div id="wrap">
+      <button *ngIf="!isloggedin()" class="btn btn-custom ml-3 text-white " routerLink="/login">
+        <i class="fas fa-sign-in-alt"></i> Log In</button>
+      <button *ngIf="!isloggedin()" class="btn btn-success ml-3 text-white" routerLink="/login/signup">
+        <i class="fas fa-user-plus"></i> Sign Up</button>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,64 @@
+<!-- <br><br><h1>This is dashboard</h1><br><br> -->
+  <!-- <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">You can now create new boards</h1>
+        <br>
+        <form #boardform="ngForm" (ngSubmit)="boardsub(boardform.value)">
+          <div class="form-group">
+            <label>Name</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="far fa-envelope"></i>
+                </span>
+              </div>
+              <input type="text" name="name" ngModel required minlength="5" class="form-control"  required>
+            </div> 
+          </div>
+          <button type="submit" class="btn btn-success btn-block" [disabled]="boardform.invalid">Submit</button>
+        </form>
+      </div>
+    </div>   -->
+
+  <br><br><br><br>
+  
+ <div class="d-flex justify-content-center">
+  <div class="card" style="width: 58rem;">
+    
+    <div class="card-body">
+      <h5 class="card-title">Work smarter with your very own Trello board.</h5>
+      <p class="card-text">Boards are where projects get organized, information is shared, and great work happens. They give everyone a shared perspective on the work getting done and what still needs to get done.</p>
+      <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create new board</a>
+    </div>
+  </div>
+ </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Board Title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form #boardform="ngForm" (ngSubmit)="boardsub(boardform.value)">
+        <div class="modal-body">
+          
+            <div class="form-group">
+              <div class="input-group">
+              <input type="text" minlength="5" name="name" ngModel required class="form-control">
+            </div>
+            </div>
+           
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" [disabled]="boardform.invalid">Create board</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+
+  <app-allboard></app-allboard>

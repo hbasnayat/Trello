@@ -1,0 +1,96 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+
+<style>
+    .container{
+    margin-top:0rem;
+    }
+    @media(max-width:500px){
+    .container{
+        margin-top: 6rem;
+    }
+    }
+    </style>
+
+    <br><br><br><br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+    <div class="card mb-5">
+        <h3 class="card-header text-center text-white bg-primary">Signup</h3>
+        <div class="card-body">
+        
+          <form #signupform="ngForm" (ngSubmit)="signupsub(signupform.value)">
+          <div class="row">
+          <div class="form-group col-md-6">
+          <label>Username</label>
+          <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-user"></i></span>
+            
+          </div>
+          <input type="text" name="username" #username="ngModel" ngModel required minlength="5" placeholder="username" class="form-control">
+        </div>
+          
+          </div>
+          <div class="form-group col-md-6">
+          <label>Password</label>
+          <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-key"></i></span>
+        
+          </div>
+          <input type="text" name="password" ngModel required placeholder="password" class="form-control">
+        </div>
+          
+          </div> 
+          <div class="form-group col-md-6">
+          <label>Email</label>
+          <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-envelope-o"></i></span>
+            
+          </div>
+          <input type="text" name="email" ngModel required placeholder="email" class="form-control">
+        </div>
+          
+          </div>
+          <div class="form-group col-md-6">
+          <label>Address</label>
+          
+          <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-address-card"></i></span>
+            
+          </div>
+          <input type="text" name="address" ngModel required placeholder="address" class="form-control">
+        </div>
+          
+          </div>
+          <div class="form-group col-md-12">
+          <label>Fullname</label>
+          <div class="input-group mb-3">
+          
+          <input type="text" name="fullname" ngModel required placeholder="fullname" class="form-control">
+        </div>
+          
+          </div>
+          <div *ngIf="username.errors">
+              <small *ngIf="username.errors.required && username.touched">username is required</small>
+              <small *ngIf="username.errors.minlength && username.dirty">
+                  {{username.errors.minlength.requiredLength-username.errors.minlength.actualLength}} more characters
+              </small>
+          </div>
+      
+      </div>
+      <button type="submit" [disabled]="signupform.invalid" class="btn btn-primary btn-block col-md-12">Submit</button>
+      </form>
+        
+        </div>
+        </div>
+        </div></div>
+        </div>
+    `
+    
